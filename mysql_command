@@ -1,0 +1,21 @@
+insert query
+INSERT INTO students(student_id,student_name,student_email) values('101','jannatu','jannat@gmail.com')
+
+####coluem na diye  o kora jai
+##3value na diye o ##insert query
+INSERT INTO students values('101','jannatu','jannat@gmail.com');
+
+####  multiple value aksathe add kora jai 
+INSERT INTO students values('104','jannatul ferdaush','jannat@gmail.com'),('105','ferdaush','jannatferdau2@gmail.com');
+
+### koita row inserted hoise hoile 1 result dibe
+  ##  $db->query($sql)  $db ar amodhe jai data abse ta ase oikhan theke query korbe $sql ar modhe jai file golo input dibo
+$db->affected_row   
+
+
+
+###################################
+DELETE FROM students WHERE student_id=1001; 
+
+
+

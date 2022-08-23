@@ -1,0 +1,77 @@
+1. ######   xampp ar mysql off korar jonno
+mysqladmin -u root -p shutdown 
+2. ###### >mysqladmin -u root -p variables
+
+
+3. ####### First name ar asending onojai name asbe
+SELECT employeeNumber ,lastName ,lastName,FROM employees ORDER BY firstName
+
+4. ####### First name ar decending onojai name asbe
+SELECT employeeNumber,lastName,firstName FROM employees ORDER BY firstName DESC;
+
+5. ########## employeeNumber,first,email,jaobtitle  ,from employees database theke  job title ar modhe sales rep ase tader dekhaw
+
+SELECT employeeNumber,firstName,email,jobTitle FROM employees WHERE jobTitle="Sales Rep";
+
+6.########## emplyees database  ar modhe  jobTitle ar modhe jar jar sales rep ase and tader officecode  1 hobe ...aksathe dekhabe ############
+
+SELECT employeeNumber,firstName,email,jobTitle FROM employees WHERE jobTitle="Sales Rep" AND officeCode = 1;
+
+7.########## emplyees database  ar modhe  jobTitle ar modhe jar jar sales rep ase or tader officecode  1 hobe ...aksathe dekhabe ############
+
+SELECT employeeNumber,firstName,email,jobTitle FROM employees WHERE jobTitle="Sales Rep" OR officeCode = 1;
+
+8.########## emplyees database  ar modhe  jobTitle ar modhe jar jar sales rep ase or tader officecode  1,2,3 ar modhe ase ############
+SELECT employeeNumber,firstName,email,jobTitle FROM employees WHERE jobTitle="Sales Rep" IN (1,2,3);
+
+9. ###### order table theke   orderNumber,shippedDate , bar kora jaikhane customerNumber 100 theke 150 ar modhe thakbe############
+
+SELECT orderNumber,shippedDate,status,customerNumber FROM orders WHERE customerNumber BETWEEN 100 AND 150;
+
+10. ##########  orders theke jaikhane shippedDate 2004-01-01 theke 2004-12-30 tarikh ar modhe ase
+
+SELECT orderNumber,status,customerNumber FROM orders WHERE shippedDate BETWEEN '2004-01-01' AND'2004-12-31';
+
+11.############# % WHILE CAR SEARCHING AR JONNO USE HOI .....firstName AR MODHE D DIYE KON KON NAME ASE TA SEARCH KORE ############
+
+SELECT employeeNumber,firstName,email FROM employees WHERE firstName LIKE "D%";
+
+12.######### %   %WHILE CAR SEARCHING AR JONNO USE HOI .....firstName AR word ar maje on thakle oi sob firstname golo  SEARCH KORE niye ase ############
+
+SELECT employeeNumber,firstName,email FROM employees WHERE firstName LIKE "%on%";
+13 . ######  0 theke first ar 5ta bad dibe .. 5  data theke porer mot 5 ta data dekhabe show korebe #############
+
+SELECT employeeNumber,firstName,email FROM employees WHERE firstName LIMIT 5,5;
+14. ########### koita record /row ase oita dekhabe count korbe ...#######
+
+SELECT COUNT(*) FROM employees
+
+15. #########  
+SELECT COUNT(*) AS Total FROM emplyees;
+
+16.########## payments table ar total amount koto ar heading hoss Total Amount name dilam amounta column k total amount name dilam  #############
+SELECT SUM(amount)AS 'Total Amount' FROM payments;
+
+17. #########  KON customer ar kase besi amount sell korse tar customer number 
+SELECT customerNumber,SUM(amount)AS 'Total Amount' FROM payments GROUP BY customerNumber;
+
+18.###########   payments ar table theke groub by kore 
+SELECT customerNumber,SUM(amount)AS 'Total Amount' FROM payments GROUP BY customerNumber ORDER BY sum(amount) DESC;
+
+19. ###  Custormer tabel a jaikhane salesRepEmployeeNumber colum a null ase a dekhaw #######
+
+SELECT customerNumber,city,country,salesRepEmployeeNumber FROM customers WHERE salesRepEmployeeNumber IS NULL;
+
+
+ ########################## UPDATE ####################
+ 
+ 1 .###  
+ UPDATE employees SET lastName = 'ferdaush',firstName ='jannatul', email = 'jannat@gamil.com' WHERE employeeNumber = 1002;
+
+ 2 ..############
+
+ UPDATE employees SET lastName = 'ferdaush',firstName ='jannatul', email = 'jannat@gamil.com' WHERE employeeNumber = 1002;
+
+3 .  ################   jaikhane email = 'jannat@gmail.com' ase oitaner fild ar first last ,email name change /update korebe  ############
+
+ UPDATE employees SET lastName = 'ferdaush',firstName ='jannatuljan', email = 'jannatul@gamil.com' WHERE email = 'jannat@gamil.com';

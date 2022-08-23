@@ -1,0 +1,10 @@
+
+1. #####333 password auto sha1 ar madhome chole jabe password dekha jabe na/...###
+INSERT INTO users_table (id, name,email,password) VALUES('','RAHIMA','rahima@gmail.com', sha1('30044'));
+
+
+#	   Name	           Type	Collation	 Attributes	Null	      Default	
+	1	id Primary	   smallint(4)			No	None		       AUTO_INCREMENT	
+	2	name	        varchar(30)	      utf8mb4_unicode_ci	 	No				
+	3	email Index  	varchar(30)	    utf8mb4_general_ci		     No				
+	4	password	    char(40)	    utf8_general_ci	            	No				

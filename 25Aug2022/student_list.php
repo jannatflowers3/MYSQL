@@ -13,42 +13,22 @@
 </head>
 <body>
     
-<div class="container">
-    <a href="students.php"> new entry</a>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"> Student Id</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">phpne</th>
-    </tr>
-  </thead>
+
 <?php
 $sql = "SELECT * FROM students";
 $result = $db->query($sql);
 // $data = $result->fetch_object();
-while($data = $result->fetch_object()){
+$data = $result->fetch_row();
 
   // echo "ID :" .$data->student_id;
-    echo "<br>";
+
+  echo "<pre>";
+
+  echo $data;
+
 
 ?>
-  <tr>
-  <td><?php echo  $data->student_id;?></td>
-    <td><?php echo $data->student_name;?></td>
-    <td><?php echo $data->student_email;?></td>
-    <td><?php echo $data->student_phone;?></td>
-
-
-   
  
-   
-  </tr>
-  <?php }   ?>
-  </tbody>
-</table>
-</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

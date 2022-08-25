@@ -1,0 +1,51 @@
+########   user create     #########
+
+mysql -h localhost -u root
+
+enter 
+# create user ...database ar modhe mysql user a table user ar name jannat create hobev #########
+jannat new user and password (identified = jannat)
+create user 'jannat'@'localhost'identified by 'jannat';
+3..  ######### then shall a   exit hote hole #######
+exit
+
+4. ######## akhon a user ar name diye localhost a open korte hobe ###########
+ mysql -h localhost -u jannat -p
+ 5 ... ######### ager password  enter password a jannat dite hobe #############
+
+   6.  #######  abr  user create korar jonno
+    create user 'rahima'@'localhost' identified by 'rahima';
+
+   7 .########### user delet korte hole  ##########
+   drop user 'jannat'@'localhost';
+   drop user 'rahima'@'localhost';
+
+   8 . #######  USER K RENAME korte hole   #######
+    RENAME USER 'rahima'@'localhost' TO 'jannatul'@'localhost';
+
+    grant select on wdpf51.* to 'rahima'@'localhost';
+
+9.. #################   wdpf51 . diye all folder k select korlam  then rahima/jannat  user k permition dewya hoise databse ar sob kiso dekhar jonno  ################
+                  user k    permission dewya 
+
+    grant select on wdpf51.* to 'rahima'@'localhost';
+    grant select on wdpf51.* to 'jannat'@'localhost';
+
+    show databases;
+    use wdpf51;
+    show tables;
+    describe students;
+    select * from users_table;   ##3  table ar modhe ki ki data ase sob dekhabe###
+grant update ,delete on wdpf51.* to 'jannatul'@'localhost';
+grant insert on wdpf51.* to 'jannatul'@'localhost';
+
+INSERT INTO students VALUES('1020','Farjana','farjana@gmail.com','012000');
+
+##########   user a privilage k insert k null korte hole revoke dite hobe
+revoke insert on wdpf51.* FROM 'jannatul'@'localhost';
+
+
+
+    kono problem hole 
+    first a root a aste hobe and enter dite hobee
+    1. mysql -h localhost -u root      

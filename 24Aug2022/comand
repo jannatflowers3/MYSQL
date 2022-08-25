@@ -1,0 +1,15 @@
+ 01  employees TABLE k copy kore employees2 create korlam ##########
+  CREATE TABLE employees2 SELECT * FROM employees
+ 
+  
+
+ 1.############ akta table ar notun column creatae korte chaile  3######
+ ALTER TABLE employees ADD COLUMN birthdate DATE;
+
+2.########   birthdate COLUMN DELETE HOBE DROP DILE ######
+ ALTER table employees DROP COLUMN birthdate;
+  ALTER table employees DROP COLUMN homedistrict VARCHAR(30);
+
+ 3. ###### ALTER 
+ ALTER TABLE employees CHANGE COLUMN homedist homedistrict VARCHAR(20) NOT NULL;
+

@@ -1,0 +1,84 @@
+-- ################# describe datable name . table name 
+describe wdpf51.sutdents;
+
+
+
+-- 1..#############  CREATE procedure  ############
+DELIMITER $$
+
+CREATE PROCEDURE GetCustomers()
+BEGIN
+	SELECT 
+		customerName, 
+		city, 
+		state, 
+		postalCode, 
+		country
+	FROM
+		customers
+	ORDER BY customerName;    
+END$$
+DELIMITER ;
+
+
+#################################### show procedure table ##########
+CALL GetCustomers();
+
+-- 2.. #################### student table ar jonno ####################
+CREATE PROCEDURE Getstudents()
+BEGIN
+	SELECT 
+	*
+	FROM
+		students
+	ORDER BY student_id;    
+END;
+
+
+
+################################################################
+--    student info
+
+   DELIMITER $$
+
+CREATE PROCEDURE get_merit_student()
+BEGIN
+	SELECT *
+	FROM
+		student_info
+	WHERE marks >90;
+    SELECT COUNT (stud_code) AS Total_student FROM student_info;
+END$$
+DELIMITER ;
+
+
+
+CALL get_merit_student();
+
+-- jai student ar number 90 ar besi tader dekhw
+
+
+-- in parametter diye koita student dekhte chai ta dekhaw
+DELIMITER $$
+
+CREATE PROCEDURE get_student(IN var1 INT)
+BEGIN
+	SELECT *
+	FROM student_info LIMIT var1;
+    SELECT COUNT (stud_code) AS Total_student FROM student_info;
+END$$
+DELIMITER ;
+
+
+#################################### TRANSACTION ################
+
+START TRANSACTION;  
+   
+--    Insert INTO students VALUES (NULL,11,'SELIM','selim@gmail.com','09999');
+   Insert INTO student_info VALUES (NULL,'112','JANNAT','Math','55','666767');
+
+--  INSET KORAR POR DATA INSERT HOBE NA COMMIT KORLE HOBE ...
+  sobar sess a abr commmit korte hobe tahole output dekhabe 
+
+-- 5. Commit changes      
+COMMIT;  

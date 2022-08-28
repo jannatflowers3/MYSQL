@@ -1,0 +1,39 @@
+1... ######  customer_address_view table create kore view hisame SELECT ar kaj golo korbe
+################ boro database thke table k view kore rekhe dile pore query kore dekhte sohoj hoi #################
+
+CREATE VIEW customer_address_view
+AS
+SELECT customerNumber,customerName, addressLine1, addressLine2,city,country,phone FROM customers ORDER BY customerNumber;
+
+2. ############  usa jara thake tader k dekhaw 
+CREATE VIEW customer_usa_address_view
+AS
+SELECT `customerNumber`, `customerName`, `addressLine1`, `addressLine2`, `city`, `country`, `phone` FROM `customer_address_view` WHERE country = 'USA' ORDER BY customerNumber;
+
+3 .  ##########  view theke all data dekhte hole 
+SELECT * FROM `customer_usa_address_view`;
+
+#########  customer_address_view thake only city country, customerName dekhte hole ###
+SELECT customerNumber,city, country FROM customer_usa_address_view;
+
+4.  #####################################   customer relationship with employees
+customers :
+customerNumber, customerName , city , country
+
+employees: 
+ employeeNumber ,lastName,email, jobTitle
+
+5. customer table theke 
+
+SELECT customerNumber,customerName,city,country,employeeNumber,lastName,email,jobTitle FROM customers,employees WHERE employees.employeeNumber = customers.salesRepEmployeeNumber;
+
+6.  ################### aivabe o likh jai ##########
+SELECT customerNumber,customerName,city,country,employeeNumber,lastName,email,jobTitle FROM customers,employees WHERE employeeNumber = salesRepEmployeeNumber;
+
+7 .. 8 .################################################################  aivabe o likha jai
+SELECT  c.customerNumber,c.customerName,c.city,c.country,e.employeeNumber,e.lastName,e.email,e.jobTitle FROM customers c,employees e WHERE e.employeeNumber = c.salesRepEmployeeNumber;
+
+################new view create kore query kora#########################
+CREATE view customerlist_with_salesrep_view
+AS
+SELECT  c.customerNumber,c.customerName,c.city,c.country,e.employeeNumber,e.lastName,e.email,e.jobTitle FROM customers c,employees e WHERE e.employeeNumber = c.salesRepEmployeeNumber;

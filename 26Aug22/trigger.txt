@@ -1,0 +1,85 @@
+DELIMITER //
+
+###########  SEPERATOR DELIMITER mane seperrator 
+semicommon na dekhano jonno DELIMITER // dewya hoi
+
+CREATE TRIGGER after_student_enty
+AFTER INSERT ON students
+FOR EACH ROW
+BEGIN
+INSERT INTO student_table_log VALUES(NULL,student_id.NEW,student_name.NEW,student_email.NEW,student_phone.NEW .'INSERT'.TIMESTAMP);
+END //
+DELIMITER ;
+####################after student entry  ##############
+
+
+BEGIN
+INSERT INTO student_table_log VALUES(NULL,NEW.student_id,NEW.student_name,NEW.student_email,NEW.student_phone,'INSERT', CURRENT_TIMESTAMP());
+END
+
+
+
+########  trigger update $##########
+DELIMITER //
+CREATE TRIGGER after_student_update
+AFTER UPDATE ON students
+FOR EACH ROW
+BEGIN
+INSERT INTO student_table_log VALUES(NULL,NEW.student_id,NEW.student_name,NEW.student_email,NEW.student_phone,'UPDATE',CURRENT_TIMESTAMP());
+END//
+DELIMITER ;
+
+
+##############################    deleter ################# 
+DELIMITER //
+CREATE TRIGGER after_student_delete
+AFTER DELETE ON students
+FOR EACH ROW
+BEGIN
+INSERT INTO student_table_log VALUES(NULL,OLD.student_id,OLD.student_name,OLD.student_email,OLD.student_phone,'DELETE',CURRENT_TIMESTAMP());
+END//
+DELIMITER ;
+
+
+
+
+
+
+
+
+############## SIR AR CODE  #######
+
+
+DELIMITER //
+CREATE TRIGGER after_student_entry
+AFTER INSERT ON students
+FOR EACH ROW
+BEGIN
+ INSERT INTO students_table_log
+VALUES (NULL, NEW.student_id, NEW.student_name, NEW.student_email, NEW.student_phone, 'INSERT', CURRENT_TIMESTAMP());
+END //
+
+DELIMITER ;
+
+*************************************************************************************
+DELIMITER //
+CREATE TRIGGER after_student_update
+AFTER UPDATE ON students
+FOR EACH ROW
+BEGIN
+ INSERT INTO students_table_log
+VALUES (NULL, NEW.student_id, NEW.student_name, NEW.student_email, NEW.student_phone, 'UPDATE', CURRENT_TIMESTAMP());
+END //
+
+DELIMITER ;
+
+*************************************************************************************
+DELIMITER //
+CREATE TRIGGER before_student_delete
+BEFORE DELETE ON students
+FOR EACH ROW
+BEGIN
+ INSERT INTO students_table_log
+VALUES (NULL, OLD.student_id, OLD.student_name, OLD.student_email, OLD.student_phone, 'DELETE', CURRENT_TIMESTAMP());
+END //
+

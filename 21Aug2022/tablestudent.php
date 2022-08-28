@@ -56,9 +56,5 @@ echo "</table>";
 ?>
  
 </div>
-
-
-
-
 </body>
 </html>

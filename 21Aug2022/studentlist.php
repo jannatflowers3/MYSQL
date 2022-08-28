@@ -25,7 +25,11 @@
     </tr>
   </thead>
 <?php
-$sql = "SELECT * FROM students";
+// $sql = "SELECT * FROM students";
+
+// preocedure diye o kora jai
+
+// $sql ="CALL Getstudents()";
 $result = $db->query($sql);
 // $data = $result->fetch_object();
 while($data = $result->fetch_object()){

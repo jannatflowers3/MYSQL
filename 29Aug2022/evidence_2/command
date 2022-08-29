@@ -1,8 +1,26 @@
+
+
 Manufacturer
 (id (auto increment), name (varchar(50)),
 address (varchar(100)), contact_no (varchar(50)).
 Product
 (id (auto increment), name (varchar(50)),
 price (INT(5)),
-m
-anufacturer_id (INT(10))
+manufacturer_id (INT(10))
+
+
+//  view query 
+
+/// jai product ar price 5000 ar besi tader dekhaw 
+SELECT p.id ,m.name,p.name,p.price FROM manufacturer m, product.p WHERE p.price>5000;
+
+CREATE VIEW product_info_view AS
+SELECT p.id ,m.name as manufacturer_name,p.name,p.price FROM manufacturer m, product p WHERE
+m.id = p.manufacturer_id
+  AND p.price>5000;
+
+
+  CREATE VIEW product_info_view AS
+SELECT p.id ,p.name,p.price as manufacturer_name, m.name FROM manufacturer m, product p WHERE
+m.id = p.manufacturer_id
+  AND p.price>5000;

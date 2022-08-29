@@ -1,0 +1,64 @@
+
+
+-- ##################   procedure maximum number   ###########################
+ 
+DELIMITER &&  
+CREATE PROCEDURE display_marks (INOUT var1 INT)  
+BEGIN  
+    SELECT marks INTO var1 FROM student_info WHERE stud_id = var1;   
+END &&  
+DELIMITER ; 
+
+--  display output for procedure max number  (&po) ar modhe data rakhlam  
+-- AS diye  number ta kon coulm a rakhbe tar name
+
+CALL `display_max_mark`(@p0); SELECT @p0 AS `highestmark`;
+
+
+-- ###############################   min number for procedure ##################
+
+CREATE PROCEDURE display_min_mark (OUT lowest INT)  
+BEGIN  
+    SELECT MIN(marks) INTO lowest FROM student_info;   
+END;
+
+-- MYSQL OUTPUT Dekhar jonno
+CALL `display_min_mark`(@p0); SELECT @p0 AS `lowest`;
+
+
+
+
+-- 3 no column ar marks dekhar jonno
+DELIMITER &&  
+CREATE PROCEDURE display_marks (INOUT jannat INT)  
+BEGIN  
+    SELECT marks INTO jannat FROM student_info WHERE stud_id = jannat;   
+END &&  
+DELIMITER ; 
+
+SET @M = '3';  
+ CALL display_marks(@M);  
+ SELECT @M;  
+
+
+
+ ###################   Function #############################
+ DELIMITER //
+CREATE FUNCTION calculate_discuount
+(cust_id CHAR(8)) RETURNS DECIMAL(10,2)
+COMMENT 'Calculate Customer discount'
+BEGIN
+ DECLARE total DECIMAL(10,2);
+ DECLARE discount DECIMAL(10,2);
+ SELECT SUM(amount) INTO total FROM payments WHERE customerNumber = cust_id;
+ SET discount = total * .05;
+ RETURN discount;
+END;
+//
+DELIMITER ;
+
+
+-- shall ar jonno command  
+--  paments table ar customerNumber ar id 114 no dile output dibe
+SET @p0='114'; SELECT `calculate_discuount`(@p0) AS `calculate_discuount`;
+

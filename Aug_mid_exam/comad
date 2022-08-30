@@ -1,0 +1,5 @@
+
+
+
+DELETE FROM product WHERE manufacturer_id = OLD.id 
+-- manufacturer_id theke deleter korle  manuferture ar id no ar sob product table a delete hobe

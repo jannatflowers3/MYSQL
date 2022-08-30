@@ -11,7 +11,7 @@ manufacturer_id (INT(10))
 
 //  view query 
 
-/// jai product ar price 5000 ar besi tader dekhaw 
+-- /// jai product ar price 5000 ar besi tader dekhaw 
 SELECT p.id ,m.name,p.name,p.price FROM manufacturer m, product.p WHERE p.price>5000;
 
 CREATE VIEW product_info_view AS

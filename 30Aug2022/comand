@@ -1,0 +1,48 @@
+-- wheels diye gorai dekhte hobe koto second a output dekhai 
+
+SELECT productName,productDescription FROM products WHERE MATCH(productDescription) AGAINST
+('Wheels');
+Showing rows 0 - 24 (33 total, Query took 0.0008 seconds.)
+
+2. -- wheels diye gorai dekhte hobe koto second a output dekhai 
+
+SELECT productName,productDescription FROM products WHERE MATCH(productDescription) AGAINST
+('Wheels');
+Showing rows 0 - 24 (33 total, Query took 0.0005 seconds.)
+
+
+-- FULTEXT text na bole colum k like diye wheels jai jai row te ase ta dekhaw
+SELECT productName,productDescription FROM products WHERE productDescription LIKE
+'%Wheels%';
+ Showing rows 0 - 24 (33 total, Query took 0.0003 seconds.)   
+--  3 second a out put dekahise 
+-- porer bar dile 4 second a output ase
+ Showing rows 0 - 24 (33 total, Query took 0.0004 seconds.)
+
+
+
+
+-- database export korar jonno 
+
+-- phpmyadmin ar theke wdpf51 k export korar jonno mysqldump dite hobe then xampp jai drive a ase oi drive name f dite hobe then jai name wdpf51 database ta export korbo tar akta name dibo wdpf51_dump.sql diye
+
+ mysqldump -u root -p wdpf51 > F:\wdpf51_dump.sql
+
+--  new database create korte hobe wdpf51_blank name 
+  mysql -u root -p wdpf51_blank < F:\wdpf51_dump.sql
+
+
+--   table export korte hole export method(customer) formet (csv/excel) 
+--   jai formet a export korbo sai format a import  korte hobe
+
+
+-- derive a notpad a file kore nitre hole
+-- mysql database ar table k text file akare ante hole 
+
+SELECT * INTO OUTFILE "F:/student_info_1.txt" FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'FROM wdpf51.student_info;
+
+SELECT * INTO OUTFILE "F:/student_info_1.xls" FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'FROM wdpf51.student_info;
+
+-- table k excel akare anter hole  file name xlsx / xls dite hobe
+
+SELECT * INTO OUTFILE "F:/student_info_1.xlsx" FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'FROM wdpf51.student_info;

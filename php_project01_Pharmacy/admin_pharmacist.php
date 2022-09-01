@@ -147,7 +147,7 @@ return false;
 				echo '<td>' . $row['last_name'] . '</td>';
 				echo '<td>' . $row['username'] . '</td>';
 				?>
-				<td><a href="update_pharmacist.php?username=<?php echo $row['username']?>"><img src="images/update-icon.png" width="35" height="35" border="0" /></a></td>
+				<td><a href="update_pharmacist.php?phupdate_id=<?php echo $row['pharmacist_id']?>"><img src="images/update-icon.png" width="35" height="35" border="0" /></a></td>
 				<td><a href="delete_pharmacist.php?pharmacist_id=<?php echo $row['pharmacist_id']?>"><img src="images/delete-icon.jpg" width="35" height="35" border="0" /></a></td>
 				<?php
 		 }

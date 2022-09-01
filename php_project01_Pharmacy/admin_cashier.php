@@ -21,12 +21,12 @@ $phone=$_POST['phone'];
 $email=$_POST['email'];
 $user=$_POST['username'];
 $pas=$_POST['password'];
-$sql1=mysql_query("SELECT * FROM cashier WHERE username='$user'")or die(mysql_error());
+$sql1=mysqli_query($con,"SELECT * FROM cashier WHERE username='$user'")or die(mysql_error());
  $result=mysql_fetch_array($sql1);
  if($result>0){
 $message="<font color=blue>sorry the username entered already exists</font>";
  }else{
-$sql=mysql_query("INSERT INTO cashier(first_name,last_name,staff_id,postal_address,phone,email,username,password,date)
+$sql=mysqli_query($con,"INSERT INTO cashier(first_name,last_name,staff_id,postal_address,phone,email,username,password,date)
 VALUES('$fname','$lname','$sid','$postal','$phone','$email','$user','$pas',NOW())");
 if($sql>0) {header("location:http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/admin_cashier.php");
 }else{
@@ -142,7 +142,7 @@ return false;
 
         // get results from database
 
-        $result = mysql_query("SELECT * FROM cashier")
+        $result = mysqli_query($con,"SELECT * FROM cashier")
                 or die(mysql_error());
 
 
@@ -152,7 +152,7 @@ return false;
         echo "<tr> <th>ID</th><th>Firstname </th> <th>Lastname </th> <th>Username </th><th>Update </th><th>Delete</th></tr>";
 
         // loop through results of database query, displaying them in the table
-        while($row = mysql_fetch_array( $result )) {
+        while($row = mysqli_fetch_array( $result )) {
 
                 // echo out the contents of each row into a table
                 echo "<tr>";

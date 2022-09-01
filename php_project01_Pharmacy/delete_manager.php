@@ -8,9 +8,9 @@ $user=$_SESSION['username'];
 header("location:http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/index.php");
 exit();
 }
-$id=$_GET[manager_id];
+$id=$_GET['manager_id'];
 $sql="delete from manager where manager_id='$id'";
-mysql_query($sql);
+mysqli_query($con,$sql);
 //$rows=mysql_fetch_assoc($result);
 header("location:admin_manager.php");
 ?>

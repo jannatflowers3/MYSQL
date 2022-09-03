@@ -1,0 +1,29 @@
+ create table student(
+    -> id int(30) not null auto_increment,
+    -> name varchar(50) not null,
+    -> st_address varchar(100) not null,
+    -> st_mobile varchar(20),
+    -> primary key(id));
+
+    create table results (
+    -> id int(20) not null auto_increment,
+    -> module_name varchar(20) not null,
+    -> titakmarks int(5) not null,
+    -> student_id int(10) not null,
+    -> primary key (id));
+
+    CREATE VIEW students_result_view 
+SELECT id,stname,st_mobile ,module_name,totalmarks FROM student,results WHERE id = re_id ORDER By stname;
+
+-- TRIGGER  table
+
+-- student table theke delete korle result ar modhe jai student_id ase  ar soman hobe 
+DELETE FROM results WHERE student_id = OLD.id;
+result = student_id   (student table ar id k result id result id te connect korar ta)
+-- delete hobe  student table ar id no theke 
+students = id
+
+
+procedure 
+mysql ar procedure create kore insert korte hobe
+INSERT INTO student VALUES(null,stname,staddress,stmobile);

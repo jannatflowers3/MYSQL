@@ -1,5 +1,18 @@
 
+DELIMITER //
+CREATE TRIGGER after_student_delete
+AFTER DELETE ON students
+FOR EACH ROW
+BEGIN
+INSERT INTO student_table_log VALUES(NULL,OLD.student_id,OLD.student_name,OLD.student_email,OLD.student_phone,'DELETE',CURRENT_TIMESTAMP());
+END//
+DELIMITER ;
 
+
+TRIGGER 
 
 DELETE FROM product WHERE manufacturer_id = OLD.id 
 -- manufacturer_id theke deleter korle  manuferture ar id no ar sob product table a delete hobe
+
+procrdure ar somoi mysql a korte chaile 
+INSERT INTO manufacturer VALUES(Null,m_name,m_address,m_phone)

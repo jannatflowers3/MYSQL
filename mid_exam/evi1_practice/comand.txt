@@ -1,0 +1,25 @@
+###########( Q.1)  create two table ######
+	########## manufacture table ###########
+	 Create table Manufacturer   values(
+	id (int) auto_increment  not null,
+	name varchar(50) not null,
+	address varchar(100) not null,
+	contact_no varchar(50) not null,
+	primary key (id));
+  	########## porduct table ##########
+   Create table product values(
+	id (int) auto_increment  not null,
+	name varchar(50) not null,
+	price int(5) not null,
+	manufacture_id int(10) not null,
+                   primary key (id));
+
+###########( Q.2)  store procedure   ######
+INSERT INTO manufacturer VALUES(null,manufac_name,manufac_address,manufac_contact);
+
+#########  ( Q.3)  delete manufacture id  by trigger ############
+DELETE FROM product WHERE manufacture_id = OLD.manufac_id 
+
+############ ( Q.4)  viewe  from product ##########
+CREATE VIEW products_list_view AS
+SELECT p.product_id,p.pr_name,m.manufac_name FROM product p, manufacturer m WHERE m.manufac_id  = p.manufacture_id AND p.pr_price>5000;

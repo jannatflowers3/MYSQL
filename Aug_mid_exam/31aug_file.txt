@@ -12,5 +12,9 @@ CREATE VIEW product_list_view AS
 SELECT p.id,p.name,m.name FROM product p, manuferture m WHERE manuferture.id = product.manufacturer_id
 
 
+CREATE VIEW products_list_view AS
+SELECT product_id,pr_name,pr_price,manufac_name FROM product , manufacturer  WHERE manufac_id  = manufacture_id AND pr_price>5000;
+
+
 SET @p0='Walton'; SET @p1='rajshai'; SET @p2='0134555'; CALL `add2_manufacture`(@p0, @p1, @p2);
 INSERT INTO manufacturer VALUES(NULL,manf_name,address,contact)

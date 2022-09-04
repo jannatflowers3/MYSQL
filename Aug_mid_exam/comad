@@ -16,3 +16,5 @@ DELETE FROM product WHERE manufacturer_id = OLD.id
 
 procrdure ar somoi mysql a korte chaile 
 INSERT INTO manufacturer VALUES(Null,m_name,m_address,m_phone)
+
+DELETE FROM product WHERE manufacture_id = OLD.manufac_id 

@@ -26,7 +26,8 @@ $result = $db->query($sql);
     }
 }
 ?>
-<!-- TRIGGER AR JONNO EDIT KORTE hole  student k delete korle result tbale theke delete hobe
+<!-- TRIGGER AR JONNO EDIT KORTE hole
+  student k delete korle result tbale theke delete hobe
 DELETE FROM student WHERE id = OLD.ID -->
 <!-- affected rows update insert and delete ar joonno hobe -->
 <form action="" method= "post">

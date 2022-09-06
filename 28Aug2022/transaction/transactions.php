@@ -10,7 +10,7 @@ mysqli_autocommit($dbConnection, false);
 
 $flag = true;
 
-$query1 = "INSERT INTO `employee` (`id`, `first_name`, `last_name`, `job_title`, `salary`) VALUES (17, 'NAHAR', 'akkter', 'HOUSEWIFE', '$salary')";
+$query1 = "INSERT INTO `employee` (`id`, `first_name`, `last_name`, `job_title`, `salary`) VALUES (17, 'LUXMEE', 'akkter', 'HOUSEWIFE', '6767')";
 $query2 = "INSERT INTO `telephone` (`id`, `employee_id`, `type`, `no`) VALUES (16, 17, 'mobile', '270-598712')";
 
 $result = mysqli_query($dbConnection, $query1);

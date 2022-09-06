@@ -12,4 +12,5 @@
 
  3. ###### ALTER 
  ALTER TABLE employees CHANGE COLUMN homedist homedistrict VARCHAR(20) NOT NULL;
+ ALTER TABLE employees RENAME COLUMN homedistrict TO homedist
 

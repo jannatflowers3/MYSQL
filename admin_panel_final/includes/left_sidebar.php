@@ -121,6 +121,35 @@
             
             </ul>
           </li>
+
+          <!-- manufacture start  -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+             Manufacture
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="manufacture.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Manufacture</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="manufacture_entry.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Manufacture</p>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+          <!-- manufacture end -->
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>

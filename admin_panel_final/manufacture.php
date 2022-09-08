@@ -42,7 +42,7 @@ if(!isset($_SESSION['email'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Products table</h1>
+            <h1 class="m-0 text-dark">Manufacture table</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -64,7 +64,7 @@ if(!isset($_SESSION['email'])){
             <div class="card-header">
               <h3 class="card-title">Alll Product</h3>
               <div class="text-right">
-                <a href="product_entry.php" class = "btn btn-pimary">New Product</a>
+                <a href="product_entry.php" class = "btn btn-pimary">New Manufacturer</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -73,26 +73,24 @@ if(!isset($_SESSION['email'])){
                 <tr>
                   <thead>
                   <th>ID</th>
-                  <th>Product Name</th>
-                  <th>Product Details</th>    
-                  <th>Price</th>
-                  <th>Product Thumnail</th>
-                  <th>Action </th>
+                  <th>Manufacturer Name</th>
+                  <th>Manufacturr Address</th>    
+                  <th>Contact</th>
                 </tr>
                 </thead>
                 <tbody>
               <?php 
                  include_once("includes/db_confiq.php");
-                 $sql = "SELECT * FROM product";
+                 $sql = "SELECT * FROM manufacture";
                   $result = $db->query($sql);
               ?>    
                 <?php while($row= $result->fetch_assoc()){ ?>
                 <tr>
-                  <td><?php echo $row['pid']; ?></td>
-                  <td><?php echo $row['pname']; ?></td>
-                  <td><?php echo $row['pdetails']; ?></td>
-                  <td><?php echo $row['pprice']; ?></td>
-                  <td><?php echo $row['pthumb']; ?></td>
+                  <td><?php echo $row['m_id']; ?></td>
+                  <td><?php echo $row['m_name']; ?></td>
+                  <td><?php echo $row['m_address']; ?></td>
+                  <td><?php echo $row['m_contact']; ?></td>
+                
                   <td>   <a href="product_edit.php?edid= <?php echo $row['pid'];?>"> <i class = "fa fa-edit"></i></a> 
                 
                   <a href="delete.php?deid= <?php echo $row['pid'];?>"  onclick = "return confirm('are you sure delete this')"> <i class = "fa fa-trash"></i></a>
@@ -102,11 +100,10 @@ if(!isset($_SESSION['email'])){
                 </tbody>
                 <tfoot>
                 <th>ID</th>
-                  <th>Product Name</th>
-                  <th>Product Details</th>    
-                  <th>Price</th>
-                  <th>Product Thumnail</th>
-                  <th>Action </th>
+                  <th>Manufacturer Name</th>
+                  <th>Manufacturr Address</th>    
+                  <th>Contact</th>
+                </tr>
                 </tr>
                 </tfoot>
                

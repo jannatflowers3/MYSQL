@@ -1,11 +1,4 @@
 
-
-<?php
-session_start();
-if(!isset($_SESSION['email'])){
-  header("Location:index.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +14,6 @@ if(!isset($_SESSION['email'])){
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -60,22 +51,7 @@ if(!isset($_SESSION['email'])){
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <?php 
-             
-             if(isset($_POST['submit'])){
-               include_once("includes/db_confiq.php");
-               extract($_POST);
-               $sql = "INSERT INTO product VALUES(NULL,'$pname','$pdetails','$pprice','$pthumb','$manufacture')";
-               // $db->query($sql);
-               echo $db->query($sql);
-               if($db->affected_rows>0){
-                     echo "<div class='alert alert-success'>Product Added successfully</div>";
-               }
-               else {
-                echo "no inserted";
-               }
-             }
-               ?>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">  
@@ -86,44 +62,54 @@ if(!isset($_SESSION['email'])){
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title" class="breadcrumb-item active">New Product Entry</h3>
+                <h3 class="card-title" class="breadcrumb-item active">Edit Product</h3>
                 
               </div>
               <!-- /.card-header -->
+              <?php
 
+include_once("includes/db_confiq.php");
+$edit_id = $_GET['edid'];
+
+if(isset($_POST['submit'])){
+  extract($_POST);
+  $sql = "UPDATE product SET  pname ='$Epname',pdetails = '$pdetails',pprice= '$pprice', pthumb='$pthumb' ,manuf_id = '$manufacture' WHERE pid ='$edit_id'";
+$db->query($sql);
+if($db->affected_rows>0){
+  echo "update successfully";
+}
+}
+
+
+$sql = " SELECT * FROM  product WHERE pid = '$edit_id'";
+$result = $db->query($sql);
+$data = $result->fetch_assoc();
+$mid = $data['manuf_id'];
+?>
      
               <!-- form start -->
               <form role="form" method= "post">
                 <div class="card-body">
               
                   <div class="form-group">
-                    <label for="pname">Product Name</label>
-                    <input type="text" class="form-control" id="pname" name = "pname" placeholder="Enter your name">
+                    <label for="Epname">Product Name</label>
+                    <input type="text" class="form-control" id="Epname" name = "Epname" value = "<?php echo $data['pname'];?>" placeholder="Enter your name">
                   </div>
                   <div class="form-group">
-
                     <label for="pdetails">Product Details</label><br>
-                    <textarea name="pdetails" id="pdetails" class="form-group  textarea"rows="10" cols="40"></textarea>
+                    <textarea name="pdetails" id="pdetails" class="form-group"rows="10" cols="40"><?php echo $data['pdetails'];?></textarea>
                   </div>
 
                   <div class="form-group">
                     <label for="pprice">Product Price</label>
-                    <input type="text" class="form-control" id="pprice" name = "pprice" placeholder="Enter your product price">
+                    <input type="text" class="form-control" id="pprice" name = "pprice" value = "<?php echo $data['pprice'];?>" placeholder="Enter your product price">
                   </div>
              
-
-                    <!-- <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div> -->
                   <div class="form-group">
                     <label for="pthumb">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="pthumb" name ="pthumb">
+                        <input type="file" class="custom-file-input" id="pthumb" name ="pthumb" value = "<?php echo $data['pthumb'];?>">
                         <label class="custom-file-label" for="pthumb">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -139,15 +125,16 @@ if(!isset($_SESSION['email'])){
              $result = $db->query($sql);
                 ?>
                         <label>Manufacture</label>
-                              <select class="form-control" name = "manufacture">
+                              <select class="form-control" name = "manufacture" value = "<?php echo $data['manuf_id'];?>">
                         <option selected disable value=""> Selected</option>
                         <?php
                                 while($row = $result->fetch_assoc()){
 
                                
                         ?>
-                          <option value="<?php  echo $row['m_id'];?>">
-                           <?php  echo $row['m_name'];?>
+                          <option value="<?php  echo $row['m_id'];?>"   <?php if($mid==$data['m_id']) {echo "selected";}?>   >
+                         
+                           <?php  echo $row['m_name'];?> 
                           </option>
                          
                           <?php
@@ -161,6 +148,9 @@ if(!isset($_SESSION['email'])){
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name ="submit">Submit</button>
                 </div>
+
+
+                
               </form>
             </div>
             <!-- /.card -->
@@ -219,12 +209,5 @@ include("includes/footer.php");
 
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote()
-  })
-</script>
 </body>
 </html>

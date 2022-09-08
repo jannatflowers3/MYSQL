@@ -21,8 +21,6 @@ if(!isset($_SESSION['email'])){
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -48,12 +46,12 @@ if(!isset($_SESSION['email'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark text-center">Product ENTRY</h1>
+            <h1 class="m-0 text-dark text-center">Manufacturer ENTRY</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Product Entry</li>
+              <li class="breadcrumb-item"><a href="#">Manufacturer</a></li>
+              <li class="breadcrumb-item active">Manufacturer Entry</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -65,7 +63,7 @@ if(!isset($_SESSION['email'])){
              if(isset($_POST['submit'])){
                include_once("includes/db_confiq.php");
                extract($_POST);
-               $sql = "INSERT INTO product VALUES(NULL,'$pname','$pdetails','$pprice','$pthumb','$manufacture')";
+               $sql = "INSERT INTO manufacture VALUES(NULL,'$m_name','$m_address','$m_contact')";
                // $db->query($sql);
                echo $db->query($sql);
                if($db->affected_rows>0){
@@ -97,66 +95,20 @@ if(!isset($_SESSION['email'])){
                 <div class="card-body">
               
                   <div class="form-group">
-                    <label for="pname">Product Name</label>
-                    <input type="text" class="form-control" id="pname" name = "pname" placeholder="Enter your name">
+                    <label for="m_name">Manufacturer Name</label>
+                    <input type="text" class="form-control" id="m_name" name = "m_name" placeholder="Enter your name">
                   </div>
                   <div class="form-group">
-
-                    <label for="pdetails">Product Details</label><br>
-                    <textarea name="pdetails" id="pdetails" class="form-group  textarea"rows="10" cols="40"></textarea>
+                    <label for="m_address">Manufacturer Address</label><br>
+                    <textarea name="m_address" id="m_address" class="form-group"rows="10" cols="40"></textarea>
                   </div>
 
                   <div class="form-group">
-                    <label for="pprice">Product Price</label>
-                    <input type="text" class="form-control" id="pprice" name = "pprice" placeholder="Enter your product price">
+                    <label for="m_contact">Manufacturer Contact</label>
+                    <input type="text" class="form-control" id="m_contact" name = "m_contact" placeholder="Enter your product price">
                   </div>
              
 
-                    <!-- <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div> -->
-                  <div class="form-group">
-                    <label for="pthumb">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="pthumb" name ="pthumb">
-                        <label class="custom-file-label" for="pthumb">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="" >Upload</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                  <?php
-                  include_once("includes/db_confiq.php");
-             $sql = "SELECT * FROM manufacture";
-             $result = $db->query($sql);
-                ?>
-                        <label>Manufacture</label>
-                              <select class="form-control" name = "manufacture">
-                        <option selected disable value=""> Selected</option>
-                        <?php
-                                while($row = $result->fetch_assoc()){
-
-                               
-                        ?>
-                          <option value="<?php  echo $row['m_id'];?>">
-                           <?php  echo $row['m_name'];?>
-                          </option>
-                         
-                          <?php
-  }
-                          ?>
-                        </select>
-                      </div>
-   
-                <!-- /.card-body -->
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name ="submit">Submit</button>
@@ -219,12 +171,5 @@ include("includes/footer.php");
 
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote()
-  })
-</script>
 </body>
 </html>
